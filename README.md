@@ -27,7 +27,7 @@ This Android movie app allows users to discover the latest and most popular movi
 To get a local copy up and running, follow these simple steps:
 
 1. **Clone the repository**
-- git clone https://github.com/your-username/movieApp.git
+- git clone https://github.com/MuhammedAshrafM/MovieApp.git
 2. **Open the project in Android Studio**
 3. **Build the project**
 - Android Studio will prompt you to install the necessary dependencies.

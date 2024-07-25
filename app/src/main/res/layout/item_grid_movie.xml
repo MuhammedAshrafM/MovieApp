@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/item_container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_movie_poster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/_1sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:scaleType="fitXY"
+            tools:src="@mipmap/ic_movie" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_movie_bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/_1sdp"
+        app:strokeColor="@color/purple_200"
+        app:strokeWidth="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        app:cardCornerRadius="@dimen/_4sdp"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@id/card_movie_poster"
+        app:layout_constraintEnd_toEndOf="@id/card_movie_poster"
+        app:layout_constraintTop_toTopOf="@id/card_movie_poster">
+
+        <ImageView
+            android:id="@+id/iv_movie_bookmark"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_margin="@dimen/_2sdp"
+            android:src="@drawable/baseline_bookmark_border_24"
+            app:tint="@color/teal_200" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:id="@+id/tv_movie_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_4sdp"
+        android:textAlignment="textStart"
+        tools:text="Venom Let There Be Carnage"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintStart_toStartOf="@id/card_movie_poster"
+        app:layout_constraintEnd_toEndOf="@id/card_movie_poster"
+        app:layout_constraintTop_toBottomOf="@+id/card_movie_poster" />
+
+    <TextView
+        android:id="@+id/tv_movie_rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:textAlignment="textStart"
+        tools:text="6.4/10 IMDb"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_3sdp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_name"
+        app:layout_constraintEnd_toEndOf="@id/tv_movie_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_name"
+        app:drawableStartCompat="@drawable/baseline_star_24" />
+
+    <TextView
+        android:id="@+id/tv_movie_release_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_6sdp"
+        android:textAlignment="textStart"
+        tools:text="1h 47m"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_3sdp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_rating"
+        app:layout_constraintEnd_toEndOf="@id/tv_movie_rating"
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_rating"
+        app:drawableStartCompat="@drawable/baseline_access_time_24" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

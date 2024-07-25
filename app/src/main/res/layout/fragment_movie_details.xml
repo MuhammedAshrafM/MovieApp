@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.ui.movie_details.MovieDetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/white"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleMarginStart="@dimen/_30sdp">
+
+            <ImageView
+                android:id="@+id/iv_movie_poster"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
+                app:layout_collapseMode="pin"
+                tools:src="@mipmap/ic_movie" />
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                android:elevation="7dp"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/no_claims_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:id="@+id/tv_movie_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:textAlignment="textStart"
+        tools:text="Venom Let There Be Carnage"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20ssp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iv_movie_bookmark"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_movie_bookmark"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_movie_name"
+        android:src="@drawable/baseline_bookmark_border_24"
+        app:tint="@color/teal_200" />
+
+    <TextView
+        android:id="@+id/tv_movie_rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:textAlignment="textStart"
+        tools:text="6.4/10 IMDb"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_3sdp"
+        android:fontFamily="sans-serif-condensed-light"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_name"
+        app:layout_constraintEnd_toStartOf="@id/tv_movie_release_date"
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_name"
+        app:drawableStartCompat="@drawable/baseline_star_24" />
+
+    <TextView
+        android:id="@+id/tv_movie_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:textAlignment="textStart"
+        tools:text="1h 47m"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_3sdp"
+        android:fontFamily="sans-serif-condensed-light"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintBottom_toBottomOf="@id/tv_movie_rating"
+        app:layout_constraintStart_toEndOf="@id/tv_movie_rating"
+        app:layout_constraintEnd_toEndOf="@id/iv_movie_bookmark"
+        app:layout_constraintTop_toTopOf="@+id/tv_movie_rating"
+        app:drawableStartCompat="@drawable/baseline_access_time_24" />
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:textAlignment="center"
+        android:text="@string/language"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="sans-serif-condensed-light"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_rating"
+        app:layout_constraintEnd_toStartOf="@id/tv_rating_avg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_rating" />
+
+    <TextView
+        android:id="@+id/tv_language_val"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textAlignment="center"
+        tools:text="English"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintStart_toStartOf="@id/tv_language"
+        app:layout_constraintEnd_toEndOf="@id/tv_language"
+        app:layout_constraintTop_toBottomOf="@+id/tv_language" />
+
+    <TextView
+        android:id="@+id/tv_rating_avg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:textAlignment="center"
+        android:text="@string/rating"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="sans-serif-condensed-light"
+        app:layout_constraintStart_toEndOf="@id/tv_language"
+        app:layout_constraintEnd_toEndOf="@id/tv_movie_release_date"
+        app:layout_constraintTop_toTopOf="@+id/tv_language" />
+
+    <TextView
+        android:id="@+id/tv_rating_avg_val"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textAlignment="center"
+        tools:text="5/10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintStart_toStartOf="@id/tv_rating_avg"
+        app:layout_constraintEnd_toEndOf="@id/tv_rating_avg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rating_avg" />
+
+    <TextView
+        android:id="@+id/tv_overview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:textAlignment="textStart"
+        android:text="@string/overview"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_rating"
+        app:layout_constraintEnd_toEndOf="@id/tv_movie_release_date"
+        app:layout_constraintTop_toBottomOf="@+id/tv_language_val" />
+
+    <TextView
+        android:id="@+id/tv_overview_val"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:textAlignment="textStart"
+        tools:text="With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man."
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="sans-serif-condensed-light"
+        app:layout_constraintStart_toStartOf="@id/tv_overview"
+        app:layout_constraintEnd_toEndOf="@id/tv_overview"
+        app:layout_constraintTop_toBottomOf="@+id/tv_overview" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

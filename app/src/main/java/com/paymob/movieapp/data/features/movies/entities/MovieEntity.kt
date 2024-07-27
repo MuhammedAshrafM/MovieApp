@@ -21,7 +21,9 @@ data class MovieEntity (
     val title: String,
     val video: Boolean,
     val voteAverage: Int,
-    val voteCount: Int
+    val voteCount: Int,
+    val rating: Float,
+    var isBookMarked: Boolean
 )
 
 class MoviesLocalMapperToModel : Mapper<List<MovieEntity>, List<Movie>>() {
@@ -47,5 +49,7 @@ fun MovieEntity.asUIModel() = Movie(
     video = video,
     voteAverage = voteAverage,
     voteCount = voteCount,
+    rating = rating,
+    isBookMarked = isBookMarked
 )
 

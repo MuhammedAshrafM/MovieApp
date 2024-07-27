@@ -44,7 +44,7 @@ fun getError(throwable: Throwable): ErrorEntity {
     }
 }
 
-fun Context.handleError(errorEntity: ErrorEntity?): String? {
+fun Context.handleError(errorEntity: ErrorEntity?): String {
     return when (errorEntity) {
         is ErrorEntity.ApiError.InternetConnection -> {
             getString(R.string.no_internet_connection)

@@ -5,38 +5,44 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.paymob.movieapp.BuildConfig.IMAGE_URL
+import com.paymob.movieapp.R
+import com.paymob.movieapp.data.features.movies.models.ListViewType
+import com.paymob.movieapp.data.features.movies.models.Movie
 import com.paymob.movieapp.databinding.ItemGridMovieBinding
 import com.paymob.movieapp.databinding.ItemMovieBinding
+import com.paymob.movieapp.presentation.utils.bindImage
+import com.paymob.movieapp.presentation.utils.bindResourceImage
 
 class MoviesAdapter(
-    private val onMovieClick: (String) -> Unit,
-    private val onFavouriteClick: (String) -> Unit
-) : ListAdapter<String, RecyclerView.ViewHolder>(Companion) {
+    private val onMovieClick: (Movie) -> Unit,
+    private val onFavouriteClick: (Movie) -> Unit
+) : ListAdapter<Movie, RecyclerView.ViewHolder>(Companion) {
 
-    private var viewType: Int = 1
+    private var listViewType: ListViewType = ListViewType.LINEAR
 
-    companion object : DiffUtil.ItemCallback<String>() {
+    companion object : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(
-            oldItem: String,
-            newItem: String
+            oldItem: Movie,
+            newItem: Movie
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldOrder: String,
-            newOrder: String
+            oldOrder: Movie,
+            newOrder: Movie
         ): Boolean {
             return oldOrder == newOrder
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return 1
+        return listViewType.viewType
     }
 
-    fun changeViewType(viewType: Int){
-        this.viewType = viewType
+    fun changeViewType(viewType: ListViewType){
+        this.listViewType = viewType
     }
 
     override fun onCreateViewHolder(
@@ -44,12 +50,12 @@ class MoviesAdapter(
         viewType: Int
     ): RecyclerView.ViewHolder =
         when(viewType){
-            1 -> {
+            ListViewType.LINEAR.viewType -> {
                 val binding =
                     ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 MoviesLinearViewHolder(binding)
             }
-            2 -> {
+            ListViewType.GRID.viewType -> {
                 val binding =
                     ItemGridMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 MoviesGridViewHolder(binding)
@@ -81,10 +87,20 @@ class MoviesAdapter(
         private val itemBinding: ItemMovieBinding
     ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        private val _context = itemBinding.root.context
-
-        fun bind(item: String) {
+        fun bind(item: Movie) {
             with(item){
+                itemBinding.tvMovieName.text = title
+                itemBinding.movieRating.rating = rating
+                itemBinding.tvMovieReleaseDate.text = releaseDate
+                bindImage(
+                    imageView = itemBinding.ivMoviePoster,
+                    imgUrl = "$IMAGE_URL$posterPath",
+                    placeHolderIsAppIcon = false
+                )
+                bindResourceImage(
+                    itemBinding.ivMovieBookmark,
+                    if(isBookMarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
+                )
             }
 
             itemBinding.itemContainer.setOnClickListener {
@@ -101,10 +117,20 @@ class MoviesAdapter(
         private val itemBinding: ItemGridMovieBinding
     ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        private val _context = itemBinding.root.context
-
-        fun bind(item: String) {
+        fun bind(item: Movie) {
             with(item){
+                itemBinding.tvMovieName.text = title
+                itemBinding.movieRating.rating = rating
+                itemBinding.tvMovieReleaseDate.text = releaseDate
+                bindImage(
+                    imageView = itemBinding.ivMoviePoster,
+                    imgUrl = "$IMAGE_URL$posterPath",
+                    placeHolderIsAppIcon = false
+                )
+                bindResourceImage(
+                    itemBinding.ivMovieBookmark,
+                    if(isBookMarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
+                )
             }
 
             itemBinding.itemContainer.setOnClickListener {

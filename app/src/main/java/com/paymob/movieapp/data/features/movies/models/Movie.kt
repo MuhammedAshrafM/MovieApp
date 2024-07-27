@@ -1,9 +1,12 @@
 package com.paymob.movieapp.data.features.movies.models
 
+import android.os.Parcelable
 import com.paymob.movieapp.data.features.movies.entities.MovieEntity
 import com.paymob.movieapp.data.network.base.Mapper
+import kotlinx.android.parcel.Parcelize
 
 
+@Parcelize
 data class Movie (
     val id: Int,
     val adult: Boolean,
@@ -18,8 +21,10 @@ data class Movie (
     val title: String,
     val video: Boolean,
     val voteAverage: Int,
-    val voteCount: Int
-)
+    val voteCount: Int,
+    val rating: Float,
+    var isBookMarked: Boolean = false
+): Parcelable
 
 
 class MovieModelMapperToEntity : Mapper<Movie, MovieEntity>() {
@@ -43,4 +48,6 @@ fun Movie.asUIModel() = MovieEntity(
     video = video,
     voteAverage = voteAverage,
     voteCount = voteCount,
+    rating = rating,
+    isBookMarked = isBookMarked
 )

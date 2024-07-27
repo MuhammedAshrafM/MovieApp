@@ -8,6 +8,8 @@ This Android movie app allows users to discover the latest and most popular movi
 - Discover Movies: Browse through the latest and trending movies with detailed information.
 - Movie Details: View detailed information about movies including Movie name, rating, release dates, original language, vote average, and poster.
 - Favorite Movies Screen: View a list of all your favorite movies.
+- Change List View: Switch between linear and grid layouts for the movie list.
+- Popular Movies by Release Date: Get popular movies filtered by a specific release date.
 - Follows MVI architecture pattern.
 - Uses Retrofit to fetch data from The Movie DB API.
 - Uses background threads rather than main threads to ensure a smooth user experience by using coroutines.

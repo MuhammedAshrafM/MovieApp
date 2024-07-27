@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:id="@+id/item_container"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:layout_marginVertical="@dimen/_6sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -21,7 +23,7 @@
         <ImageView
             android:id="@+id/iv_movie_poster"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
+            android:layout_height="@dimen/_220sdp"
             android:scaleType="fitXY"
             tools:src="@mipmap/ic_movie" />
 
@@ -71,9 +73,11 @@
         app:layout_constraintEnd_toEndOf="@id/card_movie_poster"
         app:layout_constraintTop_toBottomOf="@+id/card_movie_poster" />
 
-    <TextView
-        android:id="@+id/tv_movie_rating"
-        android:layout_width="0dp"
+    <RatingBar
+        android:id="@+id/movie_rating"
+        android:theme="@style/RatingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:textAlignment="textStart"
@@ -82,6 +86,8 @@
         android:textSize="@dimen/_12ssp"
         android:drawablePadding="@dimen/_3sdp"
         android:fontFamily="sans-serif-medium"
+        app:layout_constraintHorizontal_bias="0"
+        android:max="5"
         app:layout_constraintStart_toStartOf="@id/tv_movie_name"
         app:layout_constraintEnd_toEndOf="@id/tv_movie_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_movie_name"
@@ -100,9 +106,9 @@
         android:fontFamily="sans-serif-medium"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_movie_rating"
-        app:layout_constraintEnd_toEndOf="@id/tv_movie_rating"
-        app:layout_constraintTop_toBottomOf="@+id/tv_movie_rating"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_name"
+        app:layout_constraintEnd_toEndOf="@id/tv_movie_name"
+        app:layout_constraintTop_toBottomOf="@+id/movie_rating"
         app:drawableStartCompat="@drawable/baseline_access_time_24" />
 
 

@@ -11,4 +11,5 @@
     <string name="no_internet_connection">لا يوجد اتصال بالإنترنت، يرجى التحقق من الاتصال والمحاولة مرة أخرى</string>
     <string name="timeout_exceeded">تم تجاوز المهلة أثناء الانتظار للتحميل، تأكد من أنك متصل بالإنترنت</string>
     <string name="error_occurred">حدث خطأ، يرجى المحاولة مرة أخرى</string>
+    <string name="movies">Movies</string>
 </resources>

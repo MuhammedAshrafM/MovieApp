@@ -26,5 +26,11 @@
     <fragment
         android:id="@+id/fragment_movie_details"
         android:name="com.paymob.movieapp.presentation.ui.movie_details.MovieDetailsFragment"
-        tools:layout="@layout/fragment_movie_details" />
+        tools:layout="@layout/fragment_movie_details">
+
+        <argument
+            android:name="movie"
+            app:argType="com.paymob.movieapp.data.features.movies.models.Movie"
+            app:nullable="true"/>
+    </fragment>
 </navigation>

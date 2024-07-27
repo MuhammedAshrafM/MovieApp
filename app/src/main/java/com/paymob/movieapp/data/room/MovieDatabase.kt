@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.paymob.movieapp.data.features.movies.entities.MovieEntity
 
-@Database(entities = [MovieEntity::class], version = 1, exportSchema = false)
+@Database(entities = [MovieEntity::class], version = 3, exportSchema = false)
 @TypeConverters(IntConverter::class)
 abstract class MovieDatabase: RoomDatabase() {
 

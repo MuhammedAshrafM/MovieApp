@@ -7,6 +7,9 @@ This Android movie app allows users to discover the latest and most popular movi
 
 - Discover Movies: Browse through the latest and trending movies with detailed information.
 - Movie Details: View detailed information about movies including Movie name, rating, release dates, original language, vote average, and poster.
+- Favorite Movies Screen: View a list of all your favorite movies.
+- Change List View: Switch between linear and grid layouts for the movie list.
+- Popular Movies by Release Date: Get popular movies filtered by a specific release date.
 - Follows MVI architecture pattern.
 - Uses Retrofit to fetch data from The Movie DB API.
 - Uses background threads rather than main threads to ensure a smooth user experience by using coroutines.
@@ -19,6 +22,8 @@ This Android movie app allows users to discover the latest and most popular movi
 - Retrofit: Efficiently making API requests to The Movie Database (TMDB) for fetching movie data.
 - Coroutines: Handling asynchronous operations smoothly for a responsive user experience.
 - ViewModel and StateFlow: Providing a robust way to manage state and UI updates in a lifecycle-aware.
+- Hilt: Simplifying dependency injection with a standardized framework.
+- Room: Providing an abstraction layer over SQLite for efficient local data.
 - Glide: Loading and caching images seamlessly.
 
 

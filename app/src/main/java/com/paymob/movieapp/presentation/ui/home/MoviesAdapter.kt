@@ -73,10 +73,10 @@ class MoviesAdapter(
         item?.let {
             when (holder) {
                 is MoviesLinearViewHolder -> {
-                    holder.bind(it)
+                    holder.bind(it, position)
                 }
                 is MoviesGridViewHolder -> {
-                    holder.bind(it)
+                    holder.bind(it, position)
                 }
                 else -> {}
             }
@@ -87,14 +87,14 @@ class MoviesAdapter(
         private val itemBinding: ItemMovieBinding
     ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun bind(item: Movie) {
+        fun bind(item: Movie, position: Int) {
             with(item){
                 itemBinding.tvMovieName.text = title
                 itemBinding.movieRating.rating = rating
                 itemBinding.tvMovieReleaseDate.text = releaseDate
                 bindImage(
                     imageView = itemBinding.ivMoviePoster,
-                    imgUrl = "$IMAGE_URL$posterPath",
+                    imgUrl = posterFullPath,
                     placeHolderIsAppIcon = false
                 )
                 bindResourceImage(
@@ -108,7 +108,14 @@ class MoviesAdapter(
             }
 
             itemBinding.cardMovieBookmark.setOnClickListener {
+                // Callback to update it in local db
                 onFavouriteClick(item)
+
+                // Change the value and notify to update UI
+                item.apply {
+                    isBookMarked = !isBookMarked
+                }
+                notifyItemChanged(position)
             }
         }
      }
@@ -117,14 +124,14 @@ class MoviesAdapter(
         private val itemBinding: ItemGridMovieBinding
     ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun bind(item: Movie) {
+        fun bind(item: Movie, position: Int) {
             with(item){
                 itemBinding.tvMovieName.text = title
                 itemBinding.movieRating.rating = rating
                 itemBinding.tvMovieReleaseDate.text = releaseDate
                 bindImage(
                     imageView = itemBinding.ivMoviePoster,
-                    imgUrl = "$IMAGE_URL$posterPath",
+                    imgUrl = posterFullPath,
                     placeHolderIsAppIcon = false
                 )
                 bindResourceImage(
@@ -138,7 +145,15 @@ class MoviesAdapter(
             }
 
             itemBinding.cardMovieBookmark.setOnClickListener {
+                // Callback to update it in local db
                 onFavouriteClick(item)
+
+                // Change the value and notify to update UI
+
+                item.apply {
+                    isBookMarked = !isBookMarked
+                }
+                notifyItemChanged(position)
             }
         }
      }

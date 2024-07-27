@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_home">Home</string>
-    <string name="title_movie_details">Movie Details</string>
-    <string name="title_favorites">Favorites</string>
-    <string name="popular">Popular (2024)</string>
-    <string name="overview">Overview</string>
-    <string name="language">Language</string>
-    <string name="rating">Rating</string>
+    <string name="title_home">الصفحة الرئيسية</string>
+    <string name="title_movie_details">تفاصيل الفيلم</string>
+    <string name="title_favorites">المفضلة</string>
+    <string name="popular">الشائع (%s)</string>
+    <string name="overview">الملخص</string>
+    <string name="language">اللغة</string>
+    <string name="rating">التقييم</string>
+    <string name="movies">الأفلام</string>
 
     <string name="no_internet_connection">لا يوجد اتصال بالإنترنت، يرجى التحقق من الاتصال والمحاولة مرة أخرى</string>
     <string name="timeout_exceeded">تم تجاوز المهلة أثناء الانتظار للتحميل، تأكد من أنك متصل بالإنترنت</string>
     <string name="error_occurred">حدث خطأ، يرجى المحاولة مرة أخرى</string>
-    <string name="movies">Movies</string>
 </resources>

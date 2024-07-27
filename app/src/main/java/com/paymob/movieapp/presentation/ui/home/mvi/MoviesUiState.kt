@@ -12,7 +12,5 @@ data class MoviesUiState(
     val movies: List<Movie> = listOf(),
     val sortType: SortType = SortType.DESC,
     val releaseYear: String = "2024",
-    val listViewType: ListViewType = ListViewType.LINEAR,
-//    val movieAddedToFavourite: Int? = null,
-//    val movieRemovedFromFavourite: Int? = null
+    val listViewType: ListViewType = ListViewType.LINEAR
 )

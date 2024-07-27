@@ -1,15 +1,44 @@
 <resources>
     <string name="app_name" translatable="false">MovieApp</string>
+
     <string name="title_home">Home</string>
     <string name="title_movie_details">Movie Details</string>
     <string name="title_favorites">Favorites</string>
-    <string name="popular">Popular (2024)</string>
+    <string name="popular">Popular (%s)</string>
     <string name="overview">Overview</string>
     <string name="language">Language</string>
     <string name="rating">Rating</string>
+    <string name="movies">Movies</string>
 
     <string name="no_internet_connection">No internet connection, please check connection and try again</string>
     <string name="timeout_exceeded">Timeout exceeded while waiting for loading, make sure you are connected to the internet</string>
     <string name="error_occurred">error occurred, please try again</string>
-    <string name="movies">Movies</string>
+
+    <string-array name="release_dates" translatable="false">
+        <item>2024</item>
+        <item>2023</item>
+        <item>2022</item>
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+        <item>2009</item>
+        <item>2008</item>
+        <item>2007</item>
+        <item>2006</item>
+        <item>2005</item>
+        <item>2004</item>
+        <item>2003</item>
+        <item>2002</item>
+        <item>2001</item>
+        <item>2000</item>
+    </string-array>
 </resources>

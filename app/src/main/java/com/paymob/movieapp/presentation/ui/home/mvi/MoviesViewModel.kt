@@ -1,6 +1,5 @@
 package com.paymob.movieapp.presentation.ui.home.mvi
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.paymob.movieapp.data.features.movies.models.ListViewType
@@ -17,6 +16,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -72,6 +72,8 @@ class MoviesViewModel @Inject constructor(
                 if (response.data?.isNotEmpty() == true){
                     getFavoriteMoviesUseCase().collect { responseLocal ->
                         responseLocal.data?.let {
+                            // Update the "isBookMarked" attribute value for the movies list
+                            // to reflect it in UI
                             injectBookmarkedMoviesToMovies(response.data, responseLocal.data)
                         }
                     }
@@ -92,9 +94,9 @@ class MoviesViewModel @Inject constructor(
     private fun injectBookmarkedMoviesToMovies(movies: List<Movie>, bookmarkedMovies: List<Movie>) {
         coroutinesScope.launch {
             bookmarkedMovies.sortedBy { it.id }.onEach { bookmarkedMovie ->
-                movies.sortedBy { it.id }.first { movie ->
+                movies.sortedBy { it.id }.firstOrNull { movie ->
                     movie.id == bookmarkedMovie.id
-                }.apply {
+                }?.apply {
                     isBookMarked = true
                 }
             }
@@ -119,11 +121,11 @@ class MoviesViewModel @Inject constructor(
         )
     }
 
-    private fun changeReleaseYear(releaseYear: String) {
+    private fun changeReleaseYear(releaseYear: String?) {
         val sortType = _viewState.value.sortType
 
         loadMovies(
-            releaseYear = releaseYear,
+            releaseYear = releaseYear ?: "2024",
             sortType = sortType
         )
     }
@@ -166,39 +168,22 @@ class MoviesViewModel @Inject constructor(
     }
 
     private fun changeMovieFavorite(movie: Movie){
-        if (movie.isBookMarked) {
-            movie.apply {
-                isBookMarked = false
-            }
+        if (movie.isBookMarked)
             removeMovieFromFavorite(movie.id)
-        }
-        else {
+        else
             addMovieToFavorite(
-                movie.apply{
+                movie.copy(
                     isBookMarked = true
-                }
+                )
             )
-        }
+
     }
 
     private fun addMovieToFavorite(movie: Movie) {
         coroutinesScope.launch {
             addMovieToFavoriteUseCase(
                 movie = movie
-            ).collect { response ->
-                _viewState.update { currentUiState ->
-                    currentUiState.copy(
-                        isLoading = response.loading,
-                        error = response.errorEntity,
-//                        movieAddedToFavourite = if (response.data != null) movie.id else null
-                    )
-                }
-//                _viewState.update { currentUiState ->
-//                    currentUiState.copy(
-//                        movieAddedToFavourite = null
-//                    )
-//                }
-            }
+            ).collect()
         }
     }
 
@@ -206,20 +191,7 @@ class MoviesViewModel @Inject constructor(
         coroutinesScope.launch {
             removeMovieFromFavoriteUseCase(
                 movieId = movieId
-            ).collect { response ->
-                _viewState.update { currentUiState ->
-                    currentUiState.copy(
-                        isLoading = response.loading,
-                        error = response.errorEntity,
-//                        movieRemovedFromFavourite = if (response.data != null) movieId else null
-                    )
-                }
-//                _viewState.update { currentUiState ->
-//                    currentUiState.copy(
-//                        movieRemovedFromFavourite = null
-//                    )
-//                }
-            }
+            ).collect()
         }
     }
 

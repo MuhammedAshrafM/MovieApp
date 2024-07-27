@@ -21,7 +21,7 @@ object MovieDBModule {
         return Room.databaseBuilder(
             context,
             MovieDatabase::class.java,
-            "EduTracDatabase"
+            "MovieDatabase"
         )
             .fallbackToDestructiveMigration()
             .build()
@@ -29,7 +29,7 @@ object MovieDBModule {
 
     @Provides
     @Singleton
-    fun provideEduTracDao(eduTracDatabase: MovieDatabase): MovieDao {
-        return eduTracDatabase.eduTracDao()
+    fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {
+        return movieDatabase.movieDao()
     }
 }

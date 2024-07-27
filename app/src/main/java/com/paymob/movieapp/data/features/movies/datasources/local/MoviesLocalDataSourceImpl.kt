@@ -1,6 +1,6 @@
 package com.paymob.movieapp.data.features.movies.datasources.local
 
-import com.paymob.movieapp.data.features.movies.entities.MoviesLocalMapperToModel
+import com.paymob.movieapp.data.features.movies.entities.MoviesLocalMapperToUiModel
 import com.paymob.movieapp.data.features.movies.models.Movie
 import com.paymob.movieapp.data.features.movies.models.MovieModelMapperToEntity
 import com.paymob.movieapp.data.network.base.DataState
@@ -12,7 +12,7 @@ class MoviesLocalDataSourceImpl @Inject constructor(
     private val movieDao: MovieDao
 ) : IMoviesLocalDataSource {
     override suspend fun getFavoriteMovies(): DataState<List<Movie>> =
-        getResultDao(MoviesLocalMapperToModel()) {
+        getResultDao(MoviesLocalMapperToUiModel()) {
             movieDao.getFavoriteMovies()
         }
 

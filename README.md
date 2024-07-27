@@ -52,6 +52,15 @@ To get a local copy up and running, follow these simple steps:
 ![Image Alt](https://github.com/MuhammedAshrafM/MovieApp/blob/main/Screenshot_20240727_183002.png?raw=true)
 ![Image Alt](https://github.com/MuhammedAshrafM/MovieApp/blob/main/Screenshot_20240727_183219.png?raw=true)
 
+## Filter By Release Date
+![Image Alt](https://github.com/MuhammedAshrafM/MovieApp/blob/main/Screenshot_20240727_183115.png?raw=true)
+
+## Switch Between Linear And Grid
+![Image Alt](https://github.com/MuhammedAshrafM/MovieApp/blob/main/Screenshot_20240727_183249.png?raw=true)
+
+## Favorites
+![Image Alt](https://github.com/MuhammedAshrafM/MovieApp/blob/main/Screenshot_20240727_183326.png?raw=true)
+
 ## API Reference
 
 - This app uses the The Movie Database(TMDB) API to fetch news data. 

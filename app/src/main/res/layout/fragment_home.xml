@@ -25,13 +25,39 @@
         android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginHorizontal="@dimen/_6sdp"
         android:textAlignment="textStart"
-        android:text="@string/popular"
+        tools:text="Popular (2024)"
         android:textColor="@color/move"
         android:textSize="@dimen/_20ssp"
         android:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/spinner_dates"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <Spinner
+        android:id="@+id/spinner_dates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_popular"
+        app:layout_constraintEnd_toStartOf="@id/iv_list_view_type"
+        app:layout_constraintTop_toTopOf="@id/tv_popular"
+        app:layout_constraintBottom_toBottomOf="@id/tv_popular"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:gravity="center"
+        android:text="@string/language"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"/>
+
+    <ImageView
+        android:id="@+id/iv_list_view_type"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:padding="@dimen/_6sdp"
+        android:src="@drawable/baseline_grid_view_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_popular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_popular" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movies"

@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_220sdp"
             android:scaleType="fitXY"
-            tools:src="@mipmap/ic_movie" />
+            tools:src="@mipmap/ic_launcher" />
 
     </com.google.android.material.card.MaterialCardView>
 

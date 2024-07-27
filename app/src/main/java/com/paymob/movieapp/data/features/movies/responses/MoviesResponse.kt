@@ -1,6 +1,7 @@
 package com.paymob.movieapp.data.features.movies.responses
 
 import com.google.gson.annotations.SerializedName
+import com.paymob.movieapp.BuildConfig
 import com.paymob.movieapp.data.features.movies.models.Movie
 import com.paymob.movieapp.data.network.base.Mapper
 
@@ -51,7 +52,7 @@ data class MovieResponse (
 )
 
 
-class MoviesResponseMapperToModel : Mapper<MoviesResponse, List<Movie>>() {
+class MoviesResponseMapperToUiModel : Mapper<MoviesResponse, List<Movie>>() {
     override fun map(input: MoviesResponse): List<Movie> =
         input.results?.map {
             it.asUIModel()
@@ -69,6 +70,7 @@ fun MovieResponse.asUIModel() = Movie(
     overview = overview ?: "",
     popularity = popularity ?: 0f,
     posterPath = posterPath ?: "",
+    posterFullPath = "${BuildConfig.IMAGE_URL}${posterPath ?: ""}",
     releaseDate = releaseDate ?: "",
     title = title ?: "",
     video = video ?: false,

@@ -59,7 +59,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideEduTracRetrofit(httpClient: OkHttpClient): Retrofit.Builder =
+    fun provideMovieRetrofit(httpClient: OkHttpClient): Retrofit.Builder =
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(httpClient)

@@ -5,10 +5,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.paymob.movieapp.data.features.movies.entities.MovieEntity
 
-@Database(entities = [MovieEntity::class], version = 3, exportSchema = false)
+@Database(entities = [MovieEntity::class], version = 5, exportSchema = false)
 @TypeConverters(IntConverter::class)
 abstract class MovieDatabase: RoomDatabase() {
 
-    abstract fun eduTracDao(): MovieDao
+    abstract fun movieDao(): MovieDao
 
 }

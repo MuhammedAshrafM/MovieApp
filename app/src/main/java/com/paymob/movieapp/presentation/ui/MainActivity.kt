@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
+    // Handle the visibility of the progress bar, and you can access it from any fragment
     fun displayLoading(show: Boolean) {
         if (show) binding.progressBar.visibility = View.VISIBLE
         else binding.progressBar.visibility = View.GONE

@@ -1,52 +1,52 @@
 package com.paymob.movieapp.data.features.movies.responses
 
+import com.google.gson.annotations.SerializedName
 import com.paymob.movieapp.data.features.movies.models.Movie
 import com.paymob.movieapp.data.network.base.Mapper
-import kotlinx.serialization.SerialName
 
 data class MoviesResponse(
     val page: Int?,
     val results: List<MovieResponse>?,
 
-    @SerialName("total_pages")
+    @SerializedName("total_pages")
     val totalPages: Int?,
 
-    @SerialName("total_results")
+    @SerializedName("total_results")
     val totalResults: Int?
 )
 data class MovieResponse (
     val adult: Boolean?,
 
-    @SerialName("backdrop_path")
+    @SerializedName("backdrop_path")
     val backdropPath: String?,
 
-    @SerialName("genre_ids")
+    @SerializedName("genre_ids")
     val genreIDS: List<Int>?,
 
     val id: Int?,
 
-    @SerialName("original_language")
+    @SerializedName("original_language")
     val originalLanguage: String?,
 
-    @SerialName("original_title")
+    @SerializedName("original_title")
     val originalTitle: String?,
 
     val overview: String?,
     val popularity: Float?,
 
-    @SerialName("poster_path")
+    @SerializedName("poster_path")
     val posterPath: String?,
 
-    @SerialName("release_date")
+    @SerializedName("release_date")
     val releaseDate: String?,
 
     val title: String?,
     val video: Boolean?,
 
-    @SerialName("vote_average")
+    @SerializedName("vote_average")
     val voteAverage: Int?,
 
-    @SerialName("vote_count")
+    @SerializedName("vote_count")
     val voteCount: Int?
 )
 
@@ -74,4 +74,5 @@ fun MovieResponse.asUIModel() = Movie(
     video = video ?: false,
     voteAverage = voteAverage ?: 0,
     voteCount = voteCount ?: 0,
+    rating = ((voteAverage?.toFloat() ?: 0f) / 10f) * 5
 )

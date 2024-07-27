@@ -23,7 +23,7 @@
             android:id="@+id/iv_movie_poster"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_150sdp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             tools:src="@mipmap/ic_movie" />
 
     </com.google.android.material.card.MaterialCardView>
@@ -72,9 +72,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_movie_bookmark" />
 
-    <TextView
-        android:id="@+id/tv_movie_rating"
-        android:layout_width="0dp"
+    <RatingBar
+        android:id="@+id/movie_rating"
+        android:theme="@style/RatingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:textAlignment="textStart"
@@ -83,6 +85,8 @@
         android:textSize="@dimen/_12ssp"
         android:drawablePadding="@dimen/_3sdp"
         android:fontFamily="sans-serif-medium"
+        app:layout_constraintHorizontal_bias="0"
+        android:max="5"
         app:layout_constraintStart_toStartOf="@id/tv_movie_name"
         app:layout_constraintEnd_toEndOf="@id/tv_movie_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_movie_name"
@@ -102,9 +106,9 @@
         android:fontFamily="sans-serif-medium"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintBottom_toBottomOf="@id/view_line"
-        app:layout_constraintStart_toStartOf="@id/tv_movie_rating"
-        app:layout_constraintEnd_toEndOf="@id/tv_movie_rating"
-        app:layout_constraintTop_toBottomOf="@+id/tv_movie_rating"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_name"
+        app:layout_constraintEnd_toEndOf="@id/tv_movie_name"
+        app:layout_constraintTop_toBottomOf="@+id/movie_rating"
         app:drawableStartCompat="@drawable/baseline_access_time_24" />
 
     <View

@@ -5,6 +5,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -18,8 +20,6 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-//        manifestPlaceholders["auth0Domain"] =  "yaqeen.eu.auth0.com"
-
         //load the values from .properties file
         val keystoreFile = project.rootProject.file("gradle.properties")
         val properties = Properties()
@@ -27,12 +27,18 @@ android {
 
         //return empty key in case something goes wrong
         val baseUrl = properties.getProperty("BASE_URL") ?: ""
+        val imageUrl = properties.getProperty("IMAGE_URL") ?: ""
         val accessToken = properties.getProperty("Access_Token") ?: ""
 
         buildConfigField(
             type = "String",
             name = "BASE_URL",
             value = baseUrl
+        )
+        buildConfigField(
+            type = "String",
+            name = "IMAGE_URL",
+            value = imageUrl
         )
         buildConfigField(
             type = "String",
@@ -105,14 +111,14 @@ dependencies {
 
     // JitpackUI
     implementation("com.github.bumptech.glide:glide:4.13.0")
-    kapt("com.github.bumptech.glide:compiler:4.9.0")
+    kapt("com.github.bumptech.glide:compiler:4.13.0")
 
-    implementation("com.intuit.sdp:sdp-android:1.0.6")
+    implementation("com.intuit.sdp:sdp-android:1.1.0")
     implementation("com.intuit.ssp:ssp-android:1.0.6")
 
     implementation("com.makeramen:roundedimageview:2.3.0")
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
 }

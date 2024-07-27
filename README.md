@@ -49,7 +49,8 @@ To get a local copy up and running, follow these simple steps:
 
 
 ## Screenshots
-
+![Image Alt](https://github.com/MuhammedAshrafM/MovieApp/blob/main/Screenshot_20240727_183002.png?raw=true)
+![Image Alt](https://github.com/MuhammedAshrafM/MovieApp/blob/main/Screenshot_20240727_183219.png?raw=true)
 
 ## API Reference
 

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -62,7 +61,12 @@ class MovieDetailsFragment : BaseFragment() {
                         movie = it
                     )
                 )
-                updateUi()
+
+                // Change the value to update UI
+                it.apply {
+                    isBookMarked = !isBookMarked
+                }
+                updateMovieBookmarkUi(it.isBookMarked)
             }
 
         }
@@ -75,17 +79,21 @@ class MovieDetailsFragment : BaseFragment() {
             binding.tvMovieReleaseDate.text = releaseDate
             binding.tvLanguageVal.text = originalLanguage
             binding.tvRatingAvgVal.text = "$voteAverage"
-            binding.tvOverviewVal.text = "$overview"
+            binding.tvOverviewVal.text = overview
             bindImage(
                 imageView = binding.ivMoviePoster,
-                imgUrl = "${BuildConfig.IMAGE_URL}$posterPath",
+                imgUrl = posterFullPath,
                 placeHolderIsAppIcon = false
             )
-            bindResourceImage(
-                binding.ivMovieBookmark,
-                if(isBookMarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
-            )
+            updateMovieBookmarkUi(isBookMarked)
         }
+    }
+
+    private fun updateMovieBookmarkUi(isBookMarked: Boolean){
+        bindResourceImage(
+            binding.ivMovieBookmark,
+            if(isBookMarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
+        )
     }
 
     private fun observeViewState() {

@@ -1,6 +1,5 @@
 package com.paymob.movieapp.presentation.utils
 
-import android.content.Context
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -10,8 +9,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.paymob.movieapp.R
-import com.paymob.movieapp.data.network.error.ErrorEntity
-import com.paymob.movieapp.data.network.error.handleError
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -25,14 +22,6 @@ fun lifecycleScope(
             block()
         }
     }
-}
-
-fun handleResponseError(context: Context, errorEntity: ErrorEntity?): String? {
-    return handleError(context, errorEntity)
-}
-
-fun handleError(context: Context, errorEntity: ErrorEntity?): String? {
-    return context.handleError(errorEntity)
 }
 
 fun bindImage(imageView: ImageView, imgUrl: String?, placeHolderIsAppIcon: Boolean = true) {

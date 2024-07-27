@@ -17,6 +17,7 @@ data class MovieEntity (
     val overview: String,
     val popularity: Float,
     val posterPath: String,
+    val posterFullPath: String,
     val releaseDate: String,
     val title: String,
     val video: Boolean,
@@ -26,7 +27,7 @@ data class MovieEntity (
     var isBookMarked: Boolean
 )
 
-class MoviesLocalMapperToModel : Mapper<List<MovieEntity>, List<Movie>>() {
+class MoviesLocalMapperToUiModel : Mapper<List<MovieEntity>, List<Movie>>() {
     override fun map(input: List<MovieEntity>): List<Movie> =
         input.map {
             it.asUIModel()
@@ -44,6 +45,7 @@ fun MovieEntity.asUIModel() = Movie(
     overview = overview,
     popularity = popularity,
     posterPath = posterPath,
+    posterFullPath = posterFullPath,
     releaseDate = releaseDate,
     title = title,
     video = video,
